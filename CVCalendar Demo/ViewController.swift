@@ -694,7 +694,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(arrayForBool.objectAtIndex(indexPath.section).boolValue == true){
-            return 60
+            return 88
         }
         
         return 2;
@@ -767,21 +767,32 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-        let CellIdentifier = "Cell"
-        var cell : UITableViewCell
-        cell = self.eventListView.dequeueReusableCellWithIdentifier(CellIdentifier) as! UITableViewCell
-        
         tableView.separatorColor = UIColor.lightGrayColor()
         
         var manyCells : Bool = arrayForBool .objectAtIndex(indexPath.section).boolValue
         
         if (!manyCells) {
-            //  cell.textLabel.text = @"click to enlarge";
+            
+            let cellId = "Cell"
+            var cell : UITableViewCell
+            cell = self.eventListView.dequeueReusableCellWithIdentifier(cellId) as! UITableViewCell
+            
+//            cell.textLabel.text = "click to enlarge"
+            
+            return cell
         }
         else{
-//            var content = sectionContentDict .valueForKey(sectionTitleArray.objectAtIndex(indexPath.section) as! String) as! NSArray
-//            cell.textLabel?.text = content .objectAtIndex(indexPath.row) as? String
-            cell.backgroundColor = UIColor .clearColor()
+            
+            var cellIdentifier : String = "\(indexPath.section).\(indexPath.row)Cell"
+            var cell:EventTableViewCell? = tableView.dequeueReusableCellWithIdentifier("cellIdentifier") as? EventTableViewCell
+            
+            if (cell == nil)
+            {
+                var arr = NSBundle.mainBundle().loadNibNamed("EventTableViewCell", owner: self, options: nil)
+                cell = arr [0] as? EventTableViewCell
+            }
+            
+            cell!.backgroundColor = UIColor.clearColor()
             
             var tps = sectionTitleArray.objectAtIndex(indexPath.section) as! SectionItem
             var key : String = "\(self.getDayNameForDate(tps.date!))"
@@ -790,13 +801,13 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             if let array = count1
             {
                 let item : Event = array[indexPath.row] as! Event
-                cell.textLabel?.text = "\(item.startTime) - \(item.endTime) \(item.eventDescription)"
-                cell.detailTextLabel?.text = "\(item.name)"
-//                cell.textLabel?.text = content .objectAtIndex(indexPath.row) as? Strings
+                cell!.eventDescriptionLabel.text = "\(item.startTime) - \(item.endTime) \(item.eventDescription)"
+                cell!.taggedUserLabel.text = "\(item.name)"
+                cell!.eventNotesLabel.text = ""
             }
+            
+            return cell!
         }
-        
-        return cell
     }
 }
 
