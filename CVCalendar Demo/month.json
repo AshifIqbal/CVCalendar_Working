@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "data": {
+    "dates": [
+      {
+        "date": "2015-7-30",
+        "events": 4,
+        "pattern": 1,
+        "exchangeRequests": 0,
+        "patternChangeRequests": 0
+      },
+      {
+      "date": "2015-8-25",
+      "events": 2,
+      "pattern": 1,
+      "exchangeRequests": 0,
+      "patternChangeRequests": 0
+      }
+    ]
+  },
+  "message": "Some Message"
+}

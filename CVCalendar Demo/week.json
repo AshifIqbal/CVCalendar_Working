@@ -1,0 +1,112 @@
+{
+ "code": 200,
+ "data": {
+ "dates": [
+     {
+         "date": "2015-8-31",
+         "events": [
+          {
+            "id": 76,
+            "name": "Event",
+            "startTime": "12:32",
+            "endTime": "14:31",
+            "fileName": "api-design-ebook-2012-03.pdf",
+            "filePath": "http://www.sob.local/calendar/uploads/aaa-LN8E/api-design-ebook-2012-03.pdf",
+            "desc": "asd"
+          }
+         ],
+         "exchangeRequests": [
+ {
+ "id": 18,
+ "type": "sent",
+ "exchangeInfo": {
+ "previous": {
+ "Cassandra": "1",
+ "Lillian": "0"
+ },
+ "exchange": {
+ "Cassandra": "0",
+ "Lillian": "1"
+ }
+ },
+ "note": "can we do it?",
+ "to": {
+ "id": "148",
+ "name": "Clara Magdalen"
+ },
+ "requestedDate": "2015-08-31",
+ "response": "0",
+ "partiallyResponded": "0"
+ },
+{
+ "id": "19",
+ "type": "received",
+ "exchangeInfo": {
+ "previous": {
+ "Cassandra": "1",
+ "Lillian": "0"
+ },
+ "exchange": {
+ "Cassandra": "0",
+ "Lillian": "1"
+ }
+ },
+ "note": "can we do it?",
+ "sender": {
+ "id": "150",
+ "name": "James Hatefield"
+ },
+ "requestedDate": "2015-09-01",
+ "response": "0",
+ "partiallyResponded": "0"
+ }
+         ], 
+         "patternChangeRequests":[
+ {
+ "type": "sent",
+ "requestedPattern": {
+ "id": 182,
+ "kid": 150,
+ "pattern": "[[0,0,1,1,1,0,0],[1,1,0,0,0,1,1]]",
+ "status": 0,
+ "startDate": "2015-09-02",
+ "endDate": ""
+ },
+ "recipient": {
+ "id": "127",
+ "name": "USer User "
+ },
+ "kidNames": {
+ "id": "150",
+ "name": "Cassandra"
+ },
+ "hash": "4c5bde74a8f110656874902f07378009",
+ "previewLink": "http://www.sob.local/calendar/uploads/clara-magdalen-wryz/pattern/4c5bde74a8f110656874902f07378009.png"
+ },
+ {
+ "type": "recieved",
+ "requestedPattern": {
+ "id": 183,
+ "kid": 150,
+ "pattern": "[[0,0,1,1,1,0,0],[1,1,0,0,0,1,1]]",
+ "status": 0,
+ "startDate": "2015-09-12",
+ "endDate": ""
+ },
+ "kidNames": {
+ "id": "148",
+ "name": "Cassandra"
+ },
+ "requester": {
+ "id": "97",
+ "name": "James Hatefield"
+ },
+ "hash": "4c5bde74a8f110656874902f07378009",
+ "previewLink": "http://www.sob.local/calendar/uploads/clara-magdalen-wryz/pattern/4c5bde74a8f110656874902f07378009.png"
+ }
+]
+}
+ ]
+},
+ "message": "Some Message"
+}
