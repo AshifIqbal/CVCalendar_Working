@@ -129,12 +129,40 @@ class CVCalendarDayView: UIView {
         
         
         let dateRange = Manager.dateRange(monthView.date)
-        let year = dateRange.year
+        var year = dateRange.year
         let week = weekView.index + 1
         var month = dateRange.month
         
-        if isOut {
-            day > 20 ? month-- : month++
+        if isOut
+        {
+//            day > 20 ? month-- : month++
+            
+//            the above line produces error while calculating days for month januray or december incase of year start or end. to fix this use the below code.
+            
+            if day > 20
+            {
+                if month == 1
+                {
+                    month = 12
+                    year -= 1
+                }
+                else
+                {
+                    month -= 1
+                }
+            }
+            else
+            {
+                if month == 12
+                {
+                    month = 1
+                    year += 1
+                }
+                else
+                {
+                    month += 1
+                }
+            }
         }
         
         return CVDate(day: day, month: month, week: week, year: year)

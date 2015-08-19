@@ -82,6 +82,24 @@ class ViewController: UIViewController {
         headerView.layer.shadowOpacity = 0.4
         headerView.layer.shadowRadius = 1.0
         headerView.layer.shadowOffset = CGSizeMake(0.0, 1.0)
+        
+        //
+        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.systemTimeZone()
+        dateFormatter.locale =  NSLocale.currentLocale()
+        //                    dateFormatter.dateFormat = "dd-MM-YYYY" // this format doesn't work. Have to use the below one.
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        let date : NSDate = dateFormatter.dateFromString("2016-01-1")!
+        
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)!
+        myCalendar.firstWeekday = 2
+        //        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear, fromDate: self.date)
+        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear | .CalendarUnitYearForWeekOfYear, fromDate: date)
+        let week = myComponents.weekOfYear
+        
+        println("week number of year \(week)")
     }
 
     override func viewDidLayoutSubviews() {
@@ -994,7 +1012,8 @@ extension ViewController {
     }
     
     func getDayNameForDate(date : CVDate) ->String
-    {        var formatter = NSDateFormatter()
+    {
+        var formatter = NSDateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
         let receivedDate = formatter.dateFromString("\(date.year)-\(date.month)-\(date.day)")
         formatter.locale = NSLocale.currentLocale()

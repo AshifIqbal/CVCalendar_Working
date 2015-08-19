@@ -46,7 +46,7 @@ class CVDate: NSObject {
 extension CVDate {
     func getDayOfWeek()->Int {
         
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)!
         myCalendar.firstWeekday = 2
         let myComponents = myCalendar.components(.CalendarUnitWeekday, fromDate: self.date)
         let weekDay = myComponents.weekday
@@ -55,9 +55,10 @@ extension CVDate {
     
     func weekOfYear()->Int {
         
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)!
         myCalendar.firstWeekday = 2
-        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear, fromDate: self.date)
+//        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear, fromDate: self.date)
+        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear | .CalendarUnitYearForWeekOfYear, fromDate: self.date)
         let week = myComponents.weekOfYear
         return week
     }
