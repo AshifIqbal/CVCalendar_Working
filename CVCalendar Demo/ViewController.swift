@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var daysOutSwitch: UISwitch!
     
     @IBOutlet weak var headerView: UIView!
@@ -82,24 +83,17 @@ class ViewController: UIViewController {
         headerView.layer.shadowOpacity = 0.4
         headerView.layer.shadowRadius = 1.0
         headerView.layer.shadowOffset = CGSizeMake(0.0, 1.0)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
-        //
+        super.viewWillAppear(animated)
         
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.systemTimeZone()
-        dateFormatter.locale =  NSLocale.currentLocale()
-        //                    dateFormatter.dateFormat = "dd-MM-YYYY" // this format doesn't work. Have to use the below one.
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        var viewHeight = self.view.frame.size.height * 0.30
+        println("view height \(viewHeight)")
         
-        let date : NSDate = dateFormatter.dateFromString("2016-01-1")!
-        
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)!
-        myCalendar.firstWeekday = 2
-        //        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear, fromDate: self.date)
-        let myComponents = myCalendar.components(.CalendarUnitWeekOfYear | .CalendarUnitYearForWeekOfYear, fromDate: date)
-        let week = myComponents.weekOfYear
-        
-        println("week number of year \(week)")
+        self.calendarHeightConstraint.constant = viewHeight
+        self.view.layoutIfNeeded()
     }
 
     override func viewDidLayoutSubviews() {
